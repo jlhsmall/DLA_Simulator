@@ -9,9 +9,9 @@ using namespace std;
 
 class p2d {
     int x, y;
-    static const int stx[8], sty[8];
+    static const int stx[9], sty[9];
     static int U, D, L, R, range_x, range_y;
-    static bool grid[N][N];
+    static bool grid[N][N], adj[N][N];
 
     int go_x(int k) {
         int ret = x + stx[k];
@@ -27,22 +27,27 @@ class p2d {
         return ret;
     }
 
+    void set() {
+        grid[x][y]=1;
+        for (int k = 0; k < 9; ++k)adj[go_x(k)][go_y(k)] = 1;
+    }
+
     bool check_adjacent() {
-        for (int k = 0; k < 8; ++k)
-            if (grid[go_x(k)][go_y(k)]) return true;
-        return false;
+        return adj[x][y];
     }
 
 public:
     static void init() {
-        grid[offset][offset] = 1;
-        cout<<offset<<' '<<offset<<endl;
+        p2d O;
+        O.x = O.y = offset;
+        O.set();
+        cout << O;
     }
 
     static void set_range(int rx, int ry) {
         range_x = rx, range_y = ry;
-        L = offset - range_x / 2, R = offset + range_x  / 2 - 1;
-        D = offset - range_y / 2, U = offset + range_y  / 2 - 1;
+        L = offset - range_x / 2, R = offset + range_x / 2 - 1;
+        D = offset - range_y / 2, U = offset + range_y / 2 - 1;
     }
 
     void walk() {
@@ -58,56 +63,56 @@ public:
         while (!check_adjacent()) {
             walk();
         }
-        grid[x][y] = 1;
+        set();
     }
 
     friend ostream &operator<<(ostream &os, const p2d obj) {
-        os << obj.x  << ' ' << obj.y  << endl;
+        os << obj.x << ' ' << obj.y << endl;
         return os;
     }
 };
 
-const int p2d::stx[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
-const int p2d::sty[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
+const int p2d::stx[9] = {-1, -1, -1, 0, 0, 1, 1, 1, 0};
+const int p2d::sty[9] = {-1, 0, 1, -1, 1, -1, 0, 1, 0};
 int p2d::U, p2d::D, p2d::L, p2d::R, p2d::range_x, p2d::range_y;
-bool p2d::grid[N][N];
+bool p2d::grid[N][N], p2d::adj[N][N];
 
 int main() {
     freopen("output.txt", "w", stdout);
     srand(time(0));
+    cerr << "stage1" << endl;
+    p2d::set_range(200, 200);
     p2d::init();
     p2d tmp;
-    cerr<<"stage1"<<endl;
-    p2d::set_range(200, 200);
     for (int i = 1; i <= 1000; ++i) {
         tmp.gen();
         cout << tmp;
     }
-    cerr<<"stage2"<<endl;
+    cerr << "stage2" << endl;
     p2d::set_range(400, 400);
     for (int i = 1; i <= 1000; ++i) {
         tmp.gen();
         cout << tmp;
     }
-    cerr<<"stage3"<<endl;
+    cerr << "stage3" << endl;
     p2d::set_range(500, 500);
     for (int i = 1; i <= 3000; ++i) {
         tmp.gen();
         cout << tmp;
     }
-    cerr<<"stage3.5"<<endl;
+    cerr << "stage3.5" << endl;
     p2d::set_range(600, 600);
     for (int i = 1; i <= 3000; ++i) {
         tmp.gen();
         cout << tmp;
     }
-    cerr<<"stage4"<<endl;
+    cerr << "stage4" << endl;
     p2d::set_range(700, 700);
     for (int i = 1; i <= 5000; ++i) {
         tmp.gen();
         cout << tmp;
     }
-    cerr<<"stage5"<<endl;
+    cerr << "stage5" << endl;
     p2d::set_range(900, 900);
     for (int i = 1; i <= 5000; ++i) {
         tmp.gen();
