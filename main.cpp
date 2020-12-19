@@ -100,19 +100,19 @@ int main() {
         tmp.gen();
         cout << tmp;
     }
-    cerr << "stage3.5" << endl;
+    cerr << "stage4" << endl;
     p2d::set_range(600, 600);
     for (int i = 1; i <= 3000; ++i) {
         tmp.gen();
         cout << tmp;
     }
-    cerr << "stage4" << endl;
+    cerr << "stage5" << endl;
     p2d::set_range(700, 700);
     for (int i = 1; i <= 5000; ++i) {
         tmp.gen();
         cout << tmp;
     }
-    cerr << "stage5" << endl;
+    cerr << "stage6" << endl;
     p2d::set_range(900, 900);
     for (int i = 1; i <= 5000; ++i) {
         tmp.gen();
