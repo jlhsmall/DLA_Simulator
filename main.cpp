@@ -36,12 +36,13 @@ class p2d {
 public:
     static void init() {
         grid[offset][offset] = 1;
+        cout<<offset<<' '<<offset<<endl;
     }
 
     static void set_range(int rx, int ry) {
         range_x = rx, range_y = ry;
-        L = offset - range_x / 2, R = offset + (range_x - 1) / 2;
-        D = offset - range_y / 2, U = offset + (range_y - 1) / 2;
+        L = offset - range_x / 2, R = offset + range_x  / 2 - 1;
+        D = offset - range_y / 2, U = offset + range_y  / 2 - 1;
     }
 
     void walk() {
@@ -89,20 +90,26 @@ int main() {
         cout << tmp;
     }
     cerr<<"stage3"<<endl;
+    p2d::set_range(500, 500);
+    for (int i = 1; i <= 3000; ++i) {
+        tmp.gen();
+        cout << tmp;
+    }
+    cerr<<"stage3.5"<<endl;
     p2d::set_range(600, 600);
-    for (int i = 1; i <= 1000; ++i) {
+    for (int i = 1; i <= 3000; ++i) {
         tmp.gen();
         cout << tmp;
     }
     cerr<<"stage4"<<endl;
     p2d::set_range(700, 700);
-    for (int i = 1; i <= 1000; ++i) {
+    for (int i = 1; i <= 5000; ++i) {
         tmp.gen();
         cout << tmp;
     }
     cerr<<"stage5"<<endl;
     p2d::set_range(900, 900);
-    for (int i = 1; i <= 1000; ++i) {
+    for (int i = 1; i <= 5000; ++i) {
         tmp.gen();
         cout << tmp;
     }
