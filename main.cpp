@@ -96,13 +96,7 @@ int main() {
     }
     cerr << "stage3" << endl;
     p2d::set_range(500, 500);
-    for (int i = 1; i <= 3000; ++i) {
-        tmp.gen();
-        cout << tmp;
-    }
-    cerr << "stage3.5" << endl;
-    p2d::set_range(600, 600);
-    for (int i = 1; i <= 3000; ++i) {
+    for (int i = 1; i <= 5000; ++i) {
         tmp.gen();
         cout << tmp;
     }
